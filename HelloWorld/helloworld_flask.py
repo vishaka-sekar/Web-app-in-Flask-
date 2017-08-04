@@ -1,16 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 app.debug= True;
 
-@app.route('/hello/')
+@app.route('/hello/<user>/')
 
-def hello():
-    return "Hello World !"
+def hello(user):
+ #   return 'Hello World ! %s'%user wihtout templating
 
-@app.route('/python/')
-def hello_python():
-   return 'Hello Python'
+#with templates
+    return render_template('login.html', name = user)
+
+
 
 
 if __name__ == "__main__":
